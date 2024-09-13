@@ -1,0 +1,40 @@
+{
+    "listProduct": [
+        {
+            "id": 1,
+            "title": "Sushi",
+            "description": "Assim como o sushi é uma forma de arte culinária que requer habilidade e precisão, a metodologia ativa de Aprendizagem Baseada em Projetos requer planejamento cuidadoso e execução precisa.",
+            "image": "food-1"
+        },
+        {
+            "id": 2,
+            "title": "Ramen",
+            "description": "O Ramen, com seus muitos ingredientes trabalhando juntos para criar um prato harmonioso, reflete a metodologia ativa de Aprendizagem Colaborativa, onde todos os membros da equipe contribuem para o resultado final.",
+            "image": "food-2"
+        },
+        {
+            "id": 3,
+            "title": "Tempura",
+            "description": "Assim como a tempura requer uma mão firme e um timing preciso, a metodologia ativa de Aprendizagem Baseada em Problemas requer habilidades de resolução de problemas e pensamento crítico.",
+            "image": "food-3"
+        },
+        {
+            "id": 4,
+            "title": "Sashimi",
+            "description": "O Sashimi, com sua apresentação simples mas elegante, reflete a metodologia ativa de Aprendizagem Autodirigida, onde a simplicidade e a clareza de direção são fundamentais.",
+            "image": "food-4"
+        },
+        {
+            "id": 5,
+            "title": "Bento",
+            "description": "Assim como um Bento combina vários pratos pequenos em uma única refeição equilibrada, a metodologia ativa de Aprendizagem Híbrida combina diferentes estilos e métodos de aprendizagem.",
+            "image": "food-5"
+        },
+        {
+            "id": 6,
+            "title": "Mochi",
+            "description": "O Mochi, com sua textura única e sabor delicado, reflete a metodologia ativa de Aprendizagem Baseada em Jogos, que oferece uma experiência de aprendizagem única e envolvente.",
+            "image": "food-6"
+        }
+    ]
+}
