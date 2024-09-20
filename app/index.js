@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, ImageBackground, TouchableOpacity, StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome'; // Importando o ícone
+import { Link } from 'expo-router';
 
 export default function Index() {
   return (
@@ -19,11 +20,14 @@ export default function Index() {
       </Text>
       <Icon name="cutlery" size={32} color="#FFFFFF" style={styles.icon} />
       <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 20, width: '100%', alignItems: 'center' }}>
-        <TouchableOpacity style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%' }}>
-          <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Cardápio</Text>
-        </TouchableOpacity>
+        <Link href="/products" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%' }} asChild>
+          <TouchableOpacity >
+            <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Cardápio</Text>
+          </TouchableOpacity>
+        </Link>
       </View>
-    </ImageBackground>
+
+    </ImageBackground >
   );
 }
 

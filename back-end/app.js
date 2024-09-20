@@ -1,8 +1,18 @@
 const express = require('express');
 const app = express();
 const port = 4000;
-
-
+/**
+ * Configuração do middleware Express.js para habilitar o CORS (Cross-Origin Resource Sharing) em uma aplicação Node.js
+Instale o cors via npm: npm install cors 
+*/
+var cors = require('cors')
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  res.header("Access-Control-Allow-Headers", "X-PINGOTHER, Content-Type, Authorization")
+  app.use(cors());
+  next();
+});
 
 //http://localhost:4000
 app.get('/', (req, res) => {
@@ -72,17 +82,17 @@ app.use(express.urlencoded({ extended: true }));
 // npm install axios
 // crie a const axios na parte de cima -> const axios = require('axios');
 // http://localhost:4000/produtos
-app.get("/produtos", function (req, res) {
+app.get("/products", function (req, res) {
   axios.get('http://localhost:'+port+'/products.json')
     .then(response => {
-      res.json(response.data);
-      
+      res.json(response.data);      
     })
     .catch(error => {
       res.status(500).send('Erro ao ler o arquivo');
     });
 
 });
+
 /*
 A função de callback "response" acima, é chamada quando a promessa retornada por axios.get é resolvida. 
 O valor response é passado para esta função, e ele contém a resposta da solicitação HTTP feita com o Axios.
@@ -99,7 +109,7 @@ response.config: a configuração que foi usada para fazer a solicitação.
 
 //Retorna um produto específico
 //http://localhost:4000/produtos/1
-app.get("/produtos/:id", function (req, res) { // Define uma rota que recebe um parâmetro id
+app.get("/products/:id", function (req, res) { // Define uma rota que recebe um parâmetro id
   axios.get('http://localhost:'+port+'/products.json') // Faz uma solicitação GET para o arquivo products.json
     .then(response => { // função de callback que é chamada quando a promessa retornada. A resposta da solicitação é passada para esta função.
       // const {listProduct} = response.data; //extrai a lista de produtos dos dados da resposta.
@@ -118,7 +128,7 @@ app.get("/produtos/:id", function (req, res) { // Define uma rota que recebe um 
 // Busca de produtos pesquisa
 // Define uma rota para buscar produtos por uma palavra-chave
 // http://localhost:4000/produtos/search?q=sushi
-app.get("/produtos/search", function (req, res) {
+app.get("/products/search", function (req, res) {
   const query = req.query.q; // Obtém o parâmetro de consulta 'q' da URL
   
   // console.log('Query recebida:', query); // Log da query recebida
