@@ -2,14 +2,15 @@ import React from "react";
 import { Text, View, ScrollView, StyleSheet } from "react-native";
 import { API_URL } from './config';
 import { useEffect, useState } from 'react';
+import axios from 'axios'; // Import axios
 
 export default function Products() {
   const [products, setproducts] = useState([]);
   useEffect(() => {
-    fetch(API_URL + '/products')
-      .then(response => response.json())
-      .then(data => {
-        setproducts(data.listProduct);
+    // axios.get('http://10.55.51.42:4000/products')
+    axios.get(API_URL + '/products') 
+      .then(response => {
+        setproducts(response.data.listProduct);
       })
       .catch(error => console.error('Erro ao carregar Produtos:', error));
   }, []);
@@ -22,11 +23,6 @@ export default function Products() {
           </View>
 
           <View style={{ flexDirection: 'row' }}>
-            {/* <View style={{ flex: 1, alignItems: 'center' }}>
-              <Image style={{ width: 100, height: 100 }}
-                source={require('../assets/images/frameworks/django.webp')}
-              />
-            </View> */}
             <View style={{ flex: 2, justifyContent: 'center' }}>
               <Text>{item.description} </Text>
             </View>

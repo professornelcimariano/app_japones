@@ -5,7 +5,7 @@ const port = 4000;
  * Configuração do middleware Express.js para habilitar o CORS (Cross-Origin Resource Sharing) em uma aplicação Node.js
 Instale o cors via npm: npm install cors 
 */
-var cors = require('cors')
+const cors = require('cors')
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
