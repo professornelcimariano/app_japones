@@ -1,11 +1,11 @@
-const express = require('express');
-const app = express();
+const express = require("express"); // Importando o express
+const app = express(); // Iniciando o express, passando o express pra variável app
 const port = 4000;
 /**
  * Configuração do middleware Express.js para habilitar o CORS (Cross-Origin Resource Sharing) em uma aplicação Node.js
 Instale o cors via npm: npm install cors 
 */
-const cors = require('cors')
+var cors = require('cors')
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
@@ -35,7 +35,7 @@ app.get("/json", function (req, res) {
 });
 
 // Query Params - parâmetros passados na frente da rota, na URL
-//http://localhost:4000/curso?nome=Javascript
+//http:localhost:4000/curso?nome=Javascript
 app.get("/curso", function (req, res) {
     let x = req.query.sobrenome;
     return res.json({ curso: `Aprendendo ${x}` });
