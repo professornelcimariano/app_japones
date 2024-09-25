@@ -1,21 +1,14 @@
 import React from "react";
-import { Text, View, ImageBackground, TouchableOpacity, StyleSheet } from "react-native";
+
+import { Text, View } from "react-native";
 
 export default function Index() {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+   
         <Text>
             Conteúdo do arquivo products.json via node
         </Text>
-    </ScrollView>
+    </View>
   );
 }
-const styles = StyleSheet.create({
-  Container: {
-    display: 'flex',
-    width: '100%',
-    height: '100%',
-    justifyContent: "center",
-    alignItems: "center",
-  }  
-});
