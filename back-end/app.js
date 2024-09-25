@@ -71,7 +71,6 @@ app.get("/cursos/:index", function (req, res) {
 
 
 // Requisição com axios
-
 const path = require('path'); // Configuração para acessar o arquivo products.json
 const axios = require('axios');
 // Servindo arquivos estáticos da pasta 'public'
@@ -90,7 +89,6 @@ app.get("/products", function (req, res) {
     .catch(error => {
       res.status(500).send('Erro ao ler o arquivo');
     });
-
 });
 
 /*
