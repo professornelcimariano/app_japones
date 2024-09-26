@@ -32,9 +32,6 @@ export default function ProductsList() {
 }
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    justifyContent: "center",
-    alignItems: "center",
     padding: 15
   }, 
   title: {
