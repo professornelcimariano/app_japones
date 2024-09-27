@@ -20,9 +20,14 @@ export default function Index() {
       </Text>
       <Icon name="cutlery" size={32} color="#FFFFFF" style={styles.icon} />
       <View style={{ flex: 1, justifyContent: "flex-end", marginBottom: 20, width: '100%', alignItems: 'center' }}>
-        <Link href="/products" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%' }} asChild>
+        <Link href="/products" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%', marginBottom: 10 }} asChild>
           <TouchableOpacity >
-            <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Cardápio</Text>
+            <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>TI</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/firebase" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%' }} asChild>
+          <TouchableOpacity >
+            <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Firebase</Text>
           </TouchableOpacity>
         </Link>
       </View>
