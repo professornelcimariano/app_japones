@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ImageBackground, StyleSheet, Pressable } from "react-native";
+import { Text, View, ImageBackground, TouchableOpacity, StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome'; // Importando o ícone
 import { Link } from 'expo-router';
 
@@ -32,7 +32,6 @@ export default function Index() {
             <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Firebase</Text>
           </Pressable>
         </Link>
-
       </View>
 
     </ImageBackground >
