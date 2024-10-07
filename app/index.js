@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ImageBackground, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, ImageBackground, TouchableOpacity, StyleSheet, Pressable } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome'; // Importando o ícone
 import { Link } from 'expo-router';
 
@@ -30,6 +30,12 @@ export default function Index() {
         <Link href="/firebaseListData" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%' }} asChild>
           <Pressable>
             <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Firebase</Text>
+          </Pressable>
+        </Link>
+
+        <Link href="/auth" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%' }} asChild>
+          <Pressable>
+            <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Auth</Text>
           </Pressable>
         </Link>
       </View>

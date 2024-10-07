@@ -20,6 +20,7 @@ export default function RootLayout() {
       <Stack.Screen name="products" options={{ title: "Produtos" }} />
       <Stack.Screen name="firebaseListData" options={{ title: "Firebase" }} />
       <Stack.Screen name="firebaseCRUD" options={{ title: "Firebase" }} />
+      <Stack.Screen name="auth" options={{ title: "Auth" }} />
     </Stack>
   );
 }
