@@ -27,13 +27,19 @@ export default function Index() {
           </Pressable>
         </Link>
         
-        <Link href="/firebaseListData" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%' }} asChild>
+        <Link href="/firebaseListData" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%', marginBottom: 10 }} asChild>
           <Pressable>
-            <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Firebase</Text>
+            <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Fire List</Text>
           </Pressable>
         </Link>
 
-        <Link href="/auth" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%' }} asChild>
+        <Link href="/firebaseCRUD" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%', marginBottom: 10 }} asChild>
+          <Pressable>
+            <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Fire CRUD</Text>
+          </Pressable>
+        </Link>
+
+        <Link href="/auth" style={{ backgroundColor: "#FF3737", padding: 15, borderRadius: 10, width: '95%', marginBottom: 10 }} asChild>
           <Pressable>
             <Text style={{ fontSize: 22, color: "#FFFFFF", textAlign: "center" }}>Auth</Text>
           </Pressable>
