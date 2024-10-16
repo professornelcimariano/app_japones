@@ -6,13 +6,25 @@ import { auth } from './firebaseConfig'; // Importando auth
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import styles from './styles';
 
-
 export default function Index() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+
+
+  // Função para login
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log('Usuário logado com sucesso!');
+      setModalVisible(false);
+    } catch (error) {
+      setErrorMessage(error.message);    
+
+    }
+  };
 
   // Função para registrar um novo usuário
   const handleRegister = async () => {
@@ -26,18 +38,7 @@ export default function Index() {
     }
   };
 
-  // Função para login
-  const handleLogin = async () => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log('Usuário logado com sucesso!');
-      setModalVisible(false);
-    } catch (error) {
-      setErrorMessage(error.message);
-     
-
-    }
-  };
+  
 
   // Função para logout
   const handleLogout = async () => {
@@ -161,14 +162,14 @@ export default function Index() {
             />
 
             <View style={styles.modalButtons}>
-            <Button title="Registrar" onPress={handleRegister} />
-            <Button title="Login" onPress={handleLogin} />
-              {/* <Pressable style={styles.addButton} onPress={handleLogin}>
+            {/* <Button title="Registrar" onPress={handleRegister} />
+            <Button title="Login" onPress={handleLogin} /> */}
+              <Pressable style={styles.addButton} onPress={handleLogin}>
                 <Text style={styles.addButtonText}>Logar</Text>
               </Pressable>
               <Pressable style={styles.cancelButton} onPress={() => setModalVisible(false)}>
                 <Text style={styles.cancelButtonText}>Cancelar</Text>
-              </Pressable> */}
+              </Pressable>
             </View>
           </View>
         </View>
