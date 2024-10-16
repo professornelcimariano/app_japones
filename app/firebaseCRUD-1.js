@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert, StyleSheet,
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import { db } from './firebaseConfig';
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons'; // Importar biblioteca de ícones
+// import styles from './styles';
 
 export default function App() {
     const [users, setUsers] = useState([]);

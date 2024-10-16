@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { collection, getDocs, onSnapshot  } from 'firebase/firestore';
 import { db } from './firebaseConfig'; // Importa o Firestore configurado
+import styles from './styles';
 
 export default function App() {
     const [users, setUsers] = useState([]);

@@ -7,9 +7,10 @@ Habilite o método de autenticação com e-mail e senha.
 // npm install @react-native-firebase/app @react-native-firebase/auth @react-native-firebase/firestore
 
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, ScrollView } from 'react-native';
 import { auth } from './firebaseConfig'; // Importando auth
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import styles from './styles';
 
 export default function App() {
   const [email, setEmail] = useState('');
@@ -63,52 +64,55 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {user ? (
-        <View>
-          <Text>Bem-vindo, {user.email}</Text>
-          <Button title="Logout" onPress={handleLogout} />
-        </View>
-      ) : (
-        <View>
-          <TextInput
-            placeholder="Email"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            style={styles.input}
-          />
-          <TextInput
-            placeholder="Senha"
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            style={styles.input}
-            secureTextEntry
-          />
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
 
-          <Button title="Registrar" onPress={handleRegister} />
-          <Button title="Login" onPress={handleLogin} />
+        {user ? (
+          <View>
+            <Text>Bem-vindo, {user.email}</Text>
+            <Button title="Logout" onPress={handleLogout} />
+          </View>
+        ) : (
+          <View>
+            <TextInput
+              placeholder="Email"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              style={styles.input}
+            />
+            <TextInput
+              placeholder="Senha"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              style={styles.input}
+              secureTextEntry
+            />
 
-          {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
-        </View>
-      )}
+            <Button title="Registrar" onPress={handleRegister} />
+            <Button title="Login" onPress={handleLogin} />
+
+            {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
+          </View>
+        )}
+      </ScrollView >
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 16,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 8,
-  },
-  error: {
-    color: 'red',
-    marginTop: 10,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     padding: 16,
+//   },
+//   input: {
+//     height: 40,
+//     borderColor: 'gray',
+//     borderWidth: 1,
+//     marginBottom: 12,
+//     paddingHorizontal: 8,
+//   },
+//   error: {
+//     color: 'red',
+//     marginTop: 10,
+//   },
+// });

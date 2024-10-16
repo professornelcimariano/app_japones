@@ -3,6 +3,7 @@ import { Text, View, ScrollView, StyleSheet } from "react-native";
 import { API_URL } from './config';
 import { useEffect, useState } from 'react';
 import axios from 'axios'; // Import axios
+import styles from './styles';
 
 export default function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -30,16 +31,3 @@ export default function ProductsList() {
     </ScrollView >
   )
 }
-const styles = StyleSheet.create({
-  container: {
-    padding: 15
-  }, 
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
-  description: {
-    textAlign: 'justify',
-    marginBottom: 10
-  }
-});
