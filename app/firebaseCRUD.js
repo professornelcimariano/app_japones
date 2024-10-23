@@ -1,9 +1,26 @@
+/* 
+Firebase App (necessário para inicializar o Firebase):
+    npm install @react-native-firebase/app
+Firebase Firestore:
+    npm install @react-native-firebase/firestore
+ */
+/* npm install expo-notifications */
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, TextInput, Pressable, ScrollView, Alert, StyleSheet, Modal, StatusBar, ActivityIndicator } from 'react-native';
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import { db } from './firebaseConfig';
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import * as Notifications from 'expo-notifications';
 import styles from './styles';
+
+//Configuração do tipo de notificação na aplicação
+Notifications.setNotificationHandler({ // setNotificationHandler: Define como as notificações serão tratadas no app.
+    handleNotification: async () => ({
+        shouldShowAlert: true, // shouldShowAlert: Define se a notificação deve ser exibida como um alerta visual.
+        shouldPlaySound: true, //shouldPlaySound: Define se a notificação deve reproduzir som.
+        shouldSetBadge: false, //houldSetBadge: Define se a notificação deve alterar o número de ícones de notificação (badge) no ícone do app (geralmente em iOS).
+    }),
+});
 
 export default function App() {
     const [users, setUsers] = useState([]);
@@ -12,6 +29,30 @@ export default function App() {
     const [phone, setPhone] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
     const [loading, setLoading] = useState(true);
+    
+    // Permissão da Notificação do app
+    const notification = async () => {
+        const { status } = await Notifications.getPermissionsAsync(); // Verifica o status atual de permissão para enviar notificações. Ele retorna um objeto com o status da permissão.
+        if (status !== 'granted') {
+            const { status: newStatus } = await Notifications.requestPermissionsAsync(); // Caso a permissão não tenha sido concedida, este código solicita a permissão ao usuário.
+            if (newStatus !== 'granted') {
+                alert('Permissão de notificação negada!');
+                return;
+            }
+        }
+    };
+
+    // Função para enviar notificação
+    const sendNotification = async (name) => {
+        await Notifications.scheduleNotificationAsync({
+            content: {
+                title: name,
+                body: 'Notificação Recebida com Sucesso!!!',
+            },
+            // trigger: { seconds: 1 },
+            trigger: null,
+        });
+    };
 
     const fetchUsers = async () => {
         setLoading(true);
@@ -35,11 +76,14 @@ export default function App() {
         try {
             const newUser = { name, email, phone };
             await addDoc(collection(db, 'users'), newUser);
+            fetchUsers();
+            sendNotification(name);
             setName('');
             setEmail('');
             setPhone('');
             setModalVisible(false);
-            fetchUsers();
+            // fetchUsers();
+            // sendNotification();
         } catch (error) {
             console.error("Erro ao adicionar usuário: ", error);
         }
@@ -71,10 +115,11 @@ export default function App() {
 
     useEffect(() => {
         fetchUsers();
+        notification();
     }, []);
 
     return (
-        <ImageBackground source={require("../assets/images/bkg-home.jpg")} 
+        <ImageBackground source={require("../assets/images/bkg-home.jpg")}
             style={styles.imageBackground}
         >
             {loading ? (

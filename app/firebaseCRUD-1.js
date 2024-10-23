@@ -1,3 +1,9 @@
+/* 
+Firebase App (necessário para inicializar o Firebase):
+    npm install @react-native-firebase/app
+Firebase Firestore:
+    npm install @react-native-firebase/firestore
+ */
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert, StyleSheet, StatusBar } from 'react-native';
 import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
